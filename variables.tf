@@ -30,7 +30,7 @@ variable "azs" {
 }
 variable "environment" { default = "dev" }
 variable "instance_type" {
-  type = "map"
+  type = map(string)
   default = {
     dev = "t2.nano"
     test = "t2.micro"
