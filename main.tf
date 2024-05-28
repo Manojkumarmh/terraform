@@ -99,7 +99,7 @@ resource "aws_security_group" "allow_all" {
 resource "aws_instance" "web-1" {
     #ami = "${data.aws_ami.my_ami.id}"
     ami = "ami-0bb84b8ffd87024d8"
-    availability_zone = "us-east-1"
+    availability_zone = "us-east-1a"
     instance_type = "t2.micro"
     key_name = "LaptopKey"
     subnet_id = "${aws_subnet.subnet1-public.id}"
