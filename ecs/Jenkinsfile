@@ -15,12 +15,12 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/CodeSagarOfficial/jenkins-scripts.git'
+                git branch: 'master', url: 'https://github.com/Manojkumarmh/terraform'
             }
         }
         stage('Terraform init') {
             steps {
-                sh 'terraform init'
+                sh 'terraform init -upgrade'
             }
         }
         stage('Plan') {
@@ -39,7 +39,7 @@ pipeline {
                             parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
                         }
 
-                        sh 'terraform apply -var-file=test.tfvars -input=false tfplan'
+                        sh 'terraform apply -input=false tfplan'
                     } else if (params.action == 'destroy') {
                         sh 'terraform destroy -var-file=test.tfvars --auto-approve'
                     } else {
